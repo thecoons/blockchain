@@ -108,3 +108,4 @@ node_modules/
 
 # VScode
 .vscode/settings.json
+.pytest_cache/v/cache/nodeids
