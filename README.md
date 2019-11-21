@@ -18,9 +18,9 @@ $ pipenv install
 ``` 
 
 4. Run the server:
-    * `$ pipenv run python blockchain.py` 
-    * `$ pipenv run python blockchain.py -p 5001`
-    * `$ pipenv run python blockchain.py --port 5002`
+    * `$ pipenv run python app.py` 
+    * `$ pipenv run python app.py -p 5001`
+    * `$ pipenv run python app.py --port 5002`
     
 ## Docker
 

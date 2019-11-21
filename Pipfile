@@ -5,6 +5,7 @@ name = "pypi"
 
 [dev-packages]
 flake8 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.6"
@@ -12,3 +13,7 @@ python_version = "3.6"
 [packages]
 flask = "==0.12.2"
 requests = "==2.18.4"
+ipython = "*"
+
+[pipenv]
+allow_prereleases = true
