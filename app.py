@@ -77,7 +77,14 @@ def register_nodes():
         return "Error: Please supply a valid list of nodes", 400
 
     for node in nodes:
-        blockchain.register_node(node)
+        try:
+            blockchain.register_node(node)
+        except ValueError:
+            response = {
+                "message": "You try to add an invalide."
+                "address node : {}".format(node),
+            }
+            return jsonify(response), 400
 
     response = {
         "message": "New nodes have been added",
