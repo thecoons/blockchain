@@ -16,13 +16,15 @@ class AgentTestCase(TestCase):
 
 class TestAgent(AgentTestCase):
     def test_agent_action(self):
-        expected_action_executed = Mock()
+        expected_action_executed = Mock(return_value="NEXT_STATE")
 
         self.agent.add_action("ANY_STATE", expected_action_executed)
+        self.agent.add_action("NEXT_STATE", Mock())
         self.agent.set_state("ANY_STATE")
         self.agent.run()
 
         expected_action_executed.assert_called_once()
+        self.assertEqual(self.agent.state, "NEXT_STATE")
 
     def test_agent_dont_accept_uncallable_action(self):
         action_to_refuse = "not_a_callable_object"

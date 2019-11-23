@@ -6,7 +6,7 @@ from model.agent.factory import AgentFactory
 
 class TestAgentFactory(TestCase):
     def test_generate_agent_with_configuration(self):
-        first_expected_action_called = Mock()
+        first_expected_action_called = Mock(return_value="SECOND_ACTION")
         second_expected_action_called = Mock()
         configurations = {
             "FIRST_ACTION": first_expected_action_called,

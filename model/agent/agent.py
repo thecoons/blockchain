@@ -27,4 +27,4 @@ class Agent:
             raise StateMustBeInitToRunException
 
         action_to_run = self.state_actions.get(self.state)
-        action_to_run()
+        self.set_state(action_to_run())
