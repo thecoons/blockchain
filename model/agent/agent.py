@@ -1,6 +1,7 @@
 from .exceptions import (
     NotCallableActionRegisteredException,
     StateMustBeInitToRunException,
+    NotRegisteredStateCall,
 )
 
 
@@ -16,7 +17,10 @@ class Agent:
             raise NotCallableActionRegisteredException
 
     def set_state(self, state):
-        self.state = state
+        if state in self.state_actions:
+            self.state = state
+
+        raise NotRegisteredStateCall
 
     def run(self):
         if self.state == "":

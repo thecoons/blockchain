@@ -5,6 +5,7 @@ from model import Agent
 from model.agent.exceptions import (
     NotCallableActionRegisteredException,
     StateMustBeInitToRunException,
+    NotRegisteredStateCall,
 )
 
 
@@ -33,3 +34,7 @@ class TestAgent(AgentTestCase):
         self.agent.add_action("ANY_STATE", Mock())
         with self.assertRaises(StateMustBeInitToRunException):
             self.agent.run()
+
+    def test_cant_set_an_not_existant_state(self):
+        with self.assertRaises(NotRegisteredStateCall):
+            self.agent.set_state("NOT_REGISTERED_STATE")
