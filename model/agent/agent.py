@@ -11,16 +11,16 @@ class Agent:
         self.state = ""
 
     def add_action(self, state, action):
-        if callable(action):
-            self.state_actions.update({state: action})
-        else:
+        if not callable(action):
             raise NotCallableActionRegisteredException
 
-    def set_state(self, state):
-        if state in self.state_actions:
-            self.state = state
+        self.state_actions.update({state: action})
 
-        raise NotRegisteredStateCall
+    def set_state(self, state):
+        if state not in self.state_actions.keys():
+            raise NotRegisteredStateCall
+
+        self.state = state
 
     def run(self):
         if self.state == "":
