@@ -1,0 +1,3 @@
+WAIT_STATE = "wait"
+
+AGENT_CONFIGURATIION_BASE = {WAIT_STATE: lambda: None}
