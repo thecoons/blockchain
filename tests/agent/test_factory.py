@@ -15,9 +15,9 @@ class TestAgentFactory(TestCase):
 
         factory = AgentFactory()
 
-        created_agent = factory.create(configuration=configurations)
-        created_agent.set_state("SECOND_ACTION")
-        created_agent.set_state("FIRST_ACTION")
+        created_agent = factory.create(
+            init_state="FIRST_ACTION", configuration=configurations
+        )
         created_agent.run()
 
         first_expected_action_called.assert_called_once()
