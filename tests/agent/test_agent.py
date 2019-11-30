@@ -23,8 +23,7 @@ class TestAgent(AgentTestCase):
         self.agent.set_state("ANY_STATE")
         self.agent.run()
 
-        expected_action_executed.assert_called_once()
-        self.assertEqual(self.agent.state, "NEXT_STATE")
+        self._assert_action_called_and_state_change(expected_action_executed)
 
     def test_agent_dont_accept_uncallable_action(self):
         action_to_refuse = "not_a_callable_object"
@@ -40,3 +39,7 @@ class TestAgent(AgentTestCase):
     def test_cant_set_an_not_existant_state(self):
         with self.assertRaises(NotRegisteredStateCall):
             self.agent.set_state("NOT_REGISTERED_STATE")
+
+    def _assert_action_called_and_state_change(self, expected_action_executed):
+        expected_action_executed.assert_called_once()
+        self.assertEqual(self.agent.state, "NEXT_STATE")
